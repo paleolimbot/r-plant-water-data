@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-biblio-style: apalike
+biblio-style: authoryear
 link-citations: yes
 description: "A supplemental guide to 'Assessment of Treatment Plant Performance and Water Quality Data' (https://doi.org/10.2166/9781780409320) using R, RStudio, and the tidyverse"
 ---

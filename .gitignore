@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
+r-plant-water-data.rds
+r-plant-water-data.log
+_book
