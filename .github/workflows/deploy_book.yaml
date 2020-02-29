@@ -28,7 +28,7 @@ jobs:
       - name: Deploy source package
         if: success()
         run: |
-          cp -v -R _book/* 
+          cp -v -R _book/* pages-clone
           cd pages-clone
           git add *
           git commit -m "Commiting built book"
