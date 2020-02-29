@@ -1,0 +1,11 @@
+
+# Descriptive statistics: numerical methods for describing monitoring data
+
+This would be a good place to practice advanced dplyr usage (group by, summarize, grouped mutate)
+
+```{r}
+library(tidyverse)
+
+# load data
+```
+

@@ -1,0 +1,6 @@
+book_filename: "r-plant-water-data"
+delete_merged_file: true
+new_session: yes
+language:
+  ui:
+    chapter_name: "Chapter "

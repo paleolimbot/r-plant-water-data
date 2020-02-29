@@ -1,0 +1,11 @@
+
+# Laboratory analysis and data management
+
+This would be a good place to practice reading in data from excel
+
+```{r}
+library(tidyverse)
+
+# load data
+```
+

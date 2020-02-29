@@ -1,0 +1,11 @@
+
+# Flow data and the concept of loading
+
+Need some actual flow data that isn't from the book (to avoid copyright issues and to make the examples more compelling).
+
+```{r}
+library(tidyverse)
+
+# load data
+```
+

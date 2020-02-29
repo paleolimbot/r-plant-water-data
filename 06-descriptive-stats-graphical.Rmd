@@ -1,0 +1,11 @@
+
+# Descriptive statistics: graphical methods for describing monitoring data
+
+This would be a good place to go into detail on ggplot2
+
+```{r}
+library(tidyverse)
+
+# load data
+```
+
