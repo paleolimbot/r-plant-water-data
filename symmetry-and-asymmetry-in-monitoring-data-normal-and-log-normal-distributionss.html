@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Symmetry and asymmetry in monitoring data: normal and log-normal distributionss | Assessment of Treatment Plant Performance and Water Quality Data using R, RStudio, and the tidyverse</title>
+  <meta name="description" content="A supplemental guide to ‘Assessment of Treatment Plant Performance and Water Quality Data’ (https://doi.org/10.2166/9781780409320) using R, RStudio, and the tidyverse" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Symmetry and asymmetry in monitoring data: normal and log-normal distributionss | Assessment of Treatment Plant Performance and Water Quality Data using R, RStudio, and the tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A supplemental guide to ‘Assessment of Treatment Plant Performance and Water Quality Data’ (https://doi.org/10.2166/9781780409320) using R, RStudio, and the tidyverse" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Symmetry and asymmetry in monitoring data: normal and log-normal distributionss | Assessment of Treatment Plant Performance and Water Quality Data using R, RStudio, and the tidyverse" />
+  
+  <meta name="twitter:description" content="A supplemental guide to ‘Assessment of Treatment Plant Performance and Water Quality Data’ (https://doi.org/10.2166/9781780409320) using R, RStudio, and the tidyverse" />
+  
+
+<meta name="author" content="Some combo of Graham’s lab team" />
+
+
+<meta name="date" content="2020-02-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="removal-efficiencies.html"/>
+<link rel="next" href="compliance-with-targets-and-regulatory-standards-for-effluents-and-water-bodies.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Plant Water Data with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-rstudio-and-the-tidyverse"><i class="fa fa-check"></i><b>1.1</b> R, RStudio, and the tidyverse</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#colophon"><i class="fa fa-check"></i><b>1.2</b> Colophon</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-rstudio-and-the-tidyverse.html"><a href="introduction-to-r-rstudio-and-the-tidyverse.html"><i class="fa fa-check"></i><b>2</b> Introduction to R, RStudio, and the tidyverse</a></li>
+<li class="chapter" data-level="3" data-path="flow-data-and-the-concept-of-loading.html"><a href="flow-data-and-the-concept-of-loading.html"><i class="fa fa-check"></i><b>3</b> Flow data and the concept of loading</a></li>
+<li class="chapter" data-level="4" data-path="sampling-and-measurements.html"><a href="sampling-and-measurements.html"><i class="fa fa-check"></i><b>4</b> Sampling and measurements</a></li>
+<li class="chapter" data-level="5" data-path="laboratory-analysis-and-data-management.html"><a href="laboratory-analysis-and-data-management.html"><i class="fa fa-check"></i><b>5</b> Laboratory analysis and data management</a></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics-numerical-methods-for-describing-monitoring-data.html"><a href="descriptive-statistics-numerical-methods-for-describing-monitoring-data.html"><i class="fa fa-check"></i><b>6</b> Descriptive statistics: numerical methods for describing monitoring data</a></li>
+<li class="chapter" data-level="7" data-path="descriptive-statistics-graphical-methods-for-describing-monitoring-data.html"><a href="descriptive-statistics-graphical-methods-for-describing-monitoring-data.html"><i class="fa fa-check"></i><b>7</b> Descriptive statistics: graphical methods for describing monitoring data</a></li>
+<li class="chapter" data-level="8" data-path="removal-efficiencies.html"><a href="removal-efficiencies.html"><i class="fa fa-check"></i><b>8</b> Removal efficiencies</a></li>
+<li class="chapter" data-level="9" data-path="symmetry-and-asymmetry-in-monitoring-data-normal-and-log-normal-distributionss.html"><a href="symmetry-and-asymmetry-in-monitoring-data-normal-and-log-normal-distributionss.html"><i class="fa fa-check"></i><b>9</b> Symmetry and asymmetry in monitoring data: normal and log-normal distributionss</a></li>
+<li class="chapter" data-level="10" data-path="compliance-with-targets-and-regulatory-standards-for-effluents-and-water-bodies.html"><a href="compliance-with-targets-and-regulatory-standards-for-effluents-and-water-bodies.html"><i class="fa fa-check"></i><b>10</b> Compliance with targets and regulatory standards for effluents and water bodies</a></li>
+<li class="chapter" data-level="11" data-path="making-comparisons-with-your-monitoring-data-tests-of-hypotheses.html"><a href="making-comparisons-with-your-monitoring-data-tests-of-hypotheses.html"><i class="fa fa-check"></i><b>11</b> Making comparisons with your monitoring data: tests of hypotheses</a></li>
+<li class="chapter" data-level="12" data-path="relationship-between-monitoring-variables-correlation-and-regression-analysis.html"><a href="relationship-between-monitoring-variables-correlation-and-regression-analysis.html"><i class="fa fa-check"></i><b>12</b> Relationship between monitoring variables: correlation and regression analysis</a></li>
+<li class="chapter" data-level="13" data-path="water-and-mass-balances.html"><a href="water-and-mass-balances.html"><i class="fa fa-check"></i><b>13</b> Water and mass balances</a></li>
+<li class="chapter" data-level="14" data-path="loading-rates-applied-to-treatment-units.html"><a href="loading-rates-applied-to-treatment-units.html"><i class="fa fa-check"></i><b>14</b> Loading rates applied to treatment units</a></li>
+<li class="chapter" data-level="15" data-path="reaction-kinetics-and-reactor-hydraulics.html"><a href="reaction-kinetics-and-reactor-hydraulics.html"><i class="fa fa-check"></i><b>15</b> Reaction kinetics and reactor hydraulics</a></li>
+<li class="chapter" data-level="16" data-path="model-application-calibration-and-verification.html"><a href="model-application-calibration-and-verification.html"><i class="fa fa-check"></i><b>16</b> Model application, calibration, and verification</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Assessment of Treatment Plant Performance and Water Quality Data using R, RStudio, and the tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="symmetry-and-asymmetry-in-monitoring-data-normal-and-log-normal-distributionss" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Symmetry and asymmetry in monitoring data: normal and log-normal distributionss</h1>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="symmetry-and-asymmetry-in-monitoring-data-normal-and-log-normal-distributionss.html#cb31-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── [1mAttaching packages[22m ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## [32m✔[39m [34mggplot2[39m 3.2.1     [32m✔[39m [34mpurrr  [39m 0.3.3
+## [32m✔[39m [34mtibble [39m 2.1.3     [32m✔[39m [34mdplyr  [39m 0.8.4
+## [32m✔[39m [34mtidyr  [39m 1.0.2     [32m✔[39m [34mstringr[39m 1.4.0
+## [32m✔[39m [34mreadr  [39m 1.3.1     [32m✔[39m [34mforcats[39m 0.4.0</code></pre>
+<pre><code>## ── [1mConflicts[22m ────────────────────────────────────────── tidyverse_conflicts() ──
+## [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+## [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="symmetry-and-asymmetry-in-monitoring-data-normal-and-log-normal-distributionss.html#cb35-1"></a><span class="co"># load data</span></span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="removal-efficiencies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="compliance-with-targets-and-regulatory-standards-for-effluents-and-water-bodies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/paleolimbot/r-plant-water-data/edit/master/08-distributions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r-plant-water-data.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
